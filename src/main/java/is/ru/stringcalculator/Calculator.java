@@ -6,17 +6,13 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
-		
 		else if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
-		else if(text.contains("\n")){
-			return sum(splitNumbers(text));
-		}
-		else {
-			return 1;
-		}
-			
+		
+		else
+			//ef það er bara ein tala slegin inn
+			return toInt(text);
 	}
 
 	private static int toInt(String number){
@@ -24,7 +20,7 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split(",|\n");
+	    return numbers.split(",");
 	}
       
     private static int sum(String[] numbers){
@@ -34,5 +30,7 @@ public class Calculator {
 		}
 		return total;
     }
+
+
 
 }
