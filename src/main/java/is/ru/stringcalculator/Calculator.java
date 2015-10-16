@@ -2,6 +2,8 @@ package is.ru.stringcalculator;
 
 public class Calculator {
 
+	//	private String delimeter = (",|\n");
+
 	public static int add(String text){
 		if(text.equals("")){
 			return 0;
@@ -10,8 +12,12 @@ public class Calculator {
 		else if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
-		
+
 		else if(text.contains("\n")){
+			return sum(splitNumbers(text));
+		}
+
+		else if(text.startsWith("//")){
 			return sum(splitNumbers(text));
 		}
 
@@ -25,7 +31,19 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split(",|\n");
+
+		if (numbers.startsWith("//")) {
+			String newDelimeter = "";
+			newDelimeter += numbers.charAt(2);
+			String newString = numbers.substring(4, numbers.length());
+			
+			return newString.split(newDelimeter);
+		}
+
+		else {
+			return numbers.split(",|\n");
+		}
+	    
 	}
       
     private static int sum(String[] numbers){
