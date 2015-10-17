@@ -53,5 +53,10 @@ public class CalculatorTest {
     public void testIsOver1000() throws Exception {
     	assertEquals(2, Calculator.add("1001,2"));
     }
-
+/*
+    @Test
+    public void testDelimetersOfAnyLength() throws Exception{
+    	assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+    }
+*/
 }

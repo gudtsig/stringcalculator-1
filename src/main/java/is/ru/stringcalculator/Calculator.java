@@ -10,24 +10,7 @@ public class Calculator {
 		String [] textArray = splitNumbers(text);
 
 		return sum(textArray);
-/*
-		else if(text.contains(",")){
-			return sum(splitNumbers(text));
-		}
 
-		else if(text.contains("\n")){
-			return sum(splitNumbers(text));
-		}
-
-		else if(text.startsWith("//")){
-			return sum(splitNumbers(text));
-		}
-
-		else
-			//ef það er bara ein tala slegin inn
-			return toInt(text);
-
-			*/
 	}
 
 	private static int toInt(String number) throws Exception{
@@ -36,13 +19,30 @@ public class Calculator {
 
 	private static String[] splitNumbers(String numbers) throws Exception{
 		String delimiter = ",|\n";
+		String newDelimiter = "";
+		int number = 3;
 		if (numbers.startsWith("//")) {
 			
-			String newDelimeter = "";
-			newDelimeter += numbers.charAt(2);
-			String newString = numbers.substring(4, numbers.length());
+			if (numbers.contains("[") ) {
+				int delimiterStart = numbers.indexOf("[")+2;
+				int delimiterEnd = numbers.indexOf("]");
+
+				newDelimiter = numbers.substring(delimiterStart, delimiterEnd);
+				String newString = numbers.substring(numbers.indexOf("n")+1);
+
 			
-			return newString.split(newDelimeter);
+				return newString.split("\\" + newDelimiter);
+				
+			}
+
+			else {
+				newDelimiter += numbers.charAt(2);
+			
+				String newString = numbers.substring(4);
+			
+				return newString.split(newDelimiter);
+			}
+			
 		}
 
 		else {
