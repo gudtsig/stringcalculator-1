@@ -44,6 +44,11 @@ public class CalculatorTest {
     	Calculator.add("-1,2");
     }
 
+    @Test(expected = Exception.class)
+    public void testnoNegativeNumbers() throws Exception {
+    	Calculator.add("2,-4,3,-5");
+    }
+
     @Test
     public void testIsOver1000() throws Exception {
     	assertEquals(2, Calculator.add("1001,2"));
