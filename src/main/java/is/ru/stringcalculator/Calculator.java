@@ -2,9 +2,7 @@ package is.ru.stringcalculator;
 
 public class Calculator {
 
-	//	private String delimeter = (",|\n");
-
-	public static int add(String text){
+	public static int add(String text) throws Exception{
 		if(text.equals("")){
 			return 0;
 		}
@@ -26,13 +24,14 @@ public class Calculator {
 			return toInt(text);
 	}
 
-	private static int toInt(String number){
+	private static int toInt(String number) throws Exception{
 		return Integer.parseInt(number);
 	}
 
-	private static String[] splitNumbers(String numbers){
+	private static String[] splitNumbers(String numbers) throws Exception{
 
 		if (numbers.startsWith("//")) {
+			
 			String newDelimeter = "";
 			newDelimeter += numbers.charAt(2);
 			String newString = numbers.substring(4, numbers.length());
@@ -41,19 +40,46 @@ public class Calculator {
 		}
 
 		else {
+
 			return numbers.split(",|\n");
 		}
 	    
 	}
-      
-    private static int sum(String[] numbers){
- 	    int total = 0;
-        for(String number : numbers){
-		    total += toInt(number);
+
+	private static void isNegative(String[] numbers) throws Exception  {
+		String stringOfNegative = ""; 
+        
+        for(int number = 0; number < numbers.length; number++){
+
+        	if (toInt(numbers[number]) < 0) {
+        		
+        		stringOfNegative += numbers[number];	
+        		
+        		if (number + 1 < numbers.length){
+        			
+        			stringOfNegative += ", ";
+        		}
+        	}
+
 		}
+
+		if (stringOfNegative.length() > 0) {
+        		
+        		throw new Exception ( "Negatives not allowed:" + stringOfNegative);
+        	}
+
+	}	
+
+	 	private static int sum(String[] numbers) throws Exception{
+	   isNegative(numbers);
+	    int total = 0;
+    	
+    	for(String number : numbers){
+	    
+	    	total += toInt(number);
+		}
+		
 		return total;
     }
-
-
 
 }
