@@ -7,9 +7,11 @@ public class Calculator {
 			return 0;
 		}
 
-		String [] textArray = splitNumbers(text);
+			String [] textArray = splitNumbers(text);
 
-		return sum(textArray);
+			return sum(textArray);
+		
+		
 
 	}
 
@@ -17,31 +19,38 @@ public class Calculator {
 		return Integer.parseInt(number);
 	}
 
+	private static String[] splitDelimiterNumbers(String numbers, String delimiter) throws Exception{
+		
+		return numbers.split(delimiter);
+
+	}
+
 	private static String[] splitNumbers(String numbers) throws Exception{
 		String delimiter = ",|\n";
 		String newDelimiter = "";
-		int number = 3;
+
 		if (numbers.startsWith("//")) {
-			
+			/*
 			if (numbers.contains("[") ) {
-				int delimiterStart = numbers.indexOf("[")+2;
+				int delimiterStart = numbers.indexOf("[")+1;
 				int delimiterEnd = numbers.indexOf("]");
+				int newStringLength = numbers.indexOf("n")+1;
 
-				newDelimiter = numbers.substring(delimiterStart, delimiterEnd);
-				String newString = numbers.substring(numbers.indexOf("n")+1);
+				newDelimiter += numbers.substring(delimiterStart, delimiterEnd);
+				String newString = numbers.substring(newStringLength);
 
 			
-				return newString.split("\\" + newDelimiter);
+				return newString.split(newDelimiter);
 				
 			}
 
-			else {
-				newDelimiter += numbers.charAt(2);
-			
-				String newString = numbers.substring(4);
-			
-				return newString.split(newDelimiter);
-			}
+			else {*/
+			newDelimiter += numbers.charAt(2);
+		
+			String newString = numbers.substring(4);
+		
+			return newString.split(newDelimiter);
+		//}
 			
 		}
 
