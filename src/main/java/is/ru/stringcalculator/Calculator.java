@@ -30,27 +30,27 @@ public class Calculator {
 		String newDelimiter = "";
 
 		if (numbers.startsWith("//")) {
-			/*
+			
 			if (numbers.contains("[") ) {
 				int delimiterStart = numbers.indexOf("[")+1;
 				int delimiterEnd = numbers.indexOf("]");
 				int newStringLength = numbers.indexOf("n")+1;
-
 				newDelimiter += numbers.substring(delimiterStart, delimiterEnd);
-				String newString = numbers.substring(newStringLength);
-
-			
-				return newString.split(newDelimiter);
+				
+				numbers = numbers.replace(newDelimiter, ",");
+				numbers = numbers.substring(delimiterEnd);
+				
+				return numbers.split(",");
 				
 			}
 
-			else {*/
+			else {
 			newDelimiter += numbers.charAt(2);
 		
 			String newString = numbers.substring(4);
 		
 			return newString.split(newDelimiter);
-		//}
+		}
 			
 		}
 
