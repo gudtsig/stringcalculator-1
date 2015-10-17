@@ -1,12 +1,16 @@
 package is.ru.stringcalculator;
 
 public class Calculator {
-
+	
 	public static int add(String text) throws Exception{
 		if(text.equals("")){
 			return 0;
 		}
 
+		String [] textArray = splitNumbers(text);
+
+		return sum(textArray);
+/*
 		else if(text.contains(",")){
 			return sum(splitNumbers(text));
 		}
@@ -22,6 +26,8 @@ public class Calculator {
 		else
 			//ef það er bara ein tala slegin inn
 			return toInt(text);
+
+			*/
 	}
 
 	private static int toInt(String number) throws Exception{
@@ -29,7 +35,7 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers) throws Exception{
-
+		String delimiter = ",|\n";
 		if (numbers.startsWith("//")) {
 			
 			String newDelimeter = "";
@@ -40,8 +46,8 @@ public class Calculator {
 		}
 
 		else {
-
-			return numbers.split(",|\n");
+			
+			return numbers.split(delimiter);
 		}
 	    
 	}
